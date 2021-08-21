@@ -1,6 +1,6 @@
 	;-----------------------------------------------------
-  ; 使用wrf_user_ll_to_xy寻找距离指定经纬度坐标最近的格点，其中返回值loc1(0)为经向，loc1(1)为纬向
-  ; ------------------read wrfout file-------------------
+	; 使用wrf_user_ll_to_xy寻找距离指定经纬度坐标最近的格点，其中返回值loc1(0)为经向，loc1(1)为纬向
+	; ------------------read wrfout file-------------------
 	a = addfile("target_dir/sigfile.nc","r")
 
 	t_lake3d = wrf_user_getvar(a, "T_LAKE3D",-1)
@@ -15,7 +15,7 @@
 
 	zlist = Depths
 	;-------------interpolate to Daba--------------
-  loc1 = wrf_user_ll_to_xy(a, tofloat(t_lake_obs@lon), tofloat(t_lake_obs@lat), True)
+  	loc1 = wrf_user_ll_to_xy(a, tofloat(t_lake_obs@lon), tofloat(t_lake_obs@lat), True)
 	z_lake_dab = z_lake3d(:, loc1(1), loc1(0))
 ;	lakedepth = wrf_user_getvar(a, "LAKEDEPTH2D", 0)
 ;	print(lakedepth(loc1(1), loc1(0)))
